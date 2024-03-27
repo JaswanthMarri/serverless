@@ -19,7 +19,7 @@ jobs:
         run: zip -r files.zip ./code/main.py ./code/requirements.txt
 
       - name: Configure Google Cloud CLI
-        uses: google-github-actions/setup-gcloud@master
+        uses: google-github-actions/setup-gcloud@v0.2.0
         with:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           project_id: 'cloud-nw-dev'
