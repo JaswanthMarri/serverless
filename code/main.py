@@ -27,7 +27,7 @@ def hello_http(request):
 
     # generate a random token and set exp time
     random_token = generate_random_token()
-    current_time = datetime.now(datetime.UTC)
+    current_time = datetime.utcnow()
     tkn_exp_time = current_time + timedelta(minutes=2)
 
     # Create a update statement
