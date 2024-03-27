@@ -31,12 +31,14 @@ def hello_http(request):
     tkn_exp_time = current_time + timedelta(minutes=2)
     generated_link = 'http://jaswanthmarri.com:8080/v1/user/register?token='+random_token
 
+
     # Create a update statement
     db = connect_with_connector()
     metadata = MetaData()
     table_name = 'useraccount'
     table = Table(table_name, metadata, autoload_with=db)
     update_stmt = table.update().values(token=random_token, token_exp_time=tkn_exp_time, link=generated_link).where(table.c.username == data['user_email'])
+
 
     with db.connect() as conn:
         print(conn.execute(
@@ -215,6 +217,7 @@ def usage_demo(email_id,tkn):
     # Include the URL in the email message
     test_message_text = f"Hello from the Amazon SES mail demo! Click here to register: http://jaswanthmarri.com:8080/v1/register?token={tkn}"
     test_message_html = "<p>Hello!</p><p>From the <b>Amazon SES</b> mail demo!</p><p>Click <a href='http://jaswanthmarri.com:8080/v1/register?token=" + tkn + "'>here</a> to register.</p>"
+
 
     print(f"Sending mail from {email} to {email}.")
     ses_mail_sender.send_email(

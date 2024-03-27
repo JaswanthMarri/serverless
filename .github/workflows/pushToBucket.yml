@@ -1,0 +1,31 @@
+name: Zip and Push to GCS Bucket
+
+on:
+  pull_request_target:
+    types:
+      - closed
+
+jobs:
+  zip_and_push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install zip
+        run: sudo apt-get install zip
+
+      - name: Move to location
+        run: cd ./code
+      - name: Zip files
+        run: zip -r code.zip .
+
+      - name: Configure Google Cloud CLI
+        uses: google-github-actions/setup-gcloud@v0.2.0
+        with:
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          project_id: 'cloud-nw-dev'
+
+      - name: Upload zip file to GCS bucket
+        run: |
+          gsutil cp files.zip gs://webapp-prjt/
