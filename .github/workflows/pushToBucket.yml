@@ -28,4 +28,4 @@ jobs:
 
       - name: Upload zip file to GCS bucket
         run: |
-          gsutil cp files.zip gs://webapp-prjt/
+          gsutil cp code.zip gs://webapp-prjt/
