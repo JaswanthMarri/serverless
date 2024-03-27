@@ -18,7 +18,7 @@ jobs:
       - name: Move to location
         run: cd ./code
       - name: Zip files
-        run: zip -r code.zip .
+        run: zip -r code.zip ./code/
 
       - name: Configure Google Cloud CLI
         uses: google-github-actions/setup-gcloud@v0.2.0
