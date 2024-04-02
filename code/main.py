@@ -221,7 +221,7 @@ def usage_demo(email_id,tkn):
 
     print(f"Sending mail from {email} to {email}.")
     ses_mail_sender.send_email(
-        'rentopropertymanagement@gmail.com',
+        'support@jaswanthmarri.com',
         SesDestination([email]),
         "Amazon SES demo",
         test_message_text,
