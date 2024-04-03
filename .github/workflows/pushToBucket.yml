@@ -18,7 +18,8 @@ jobs:
       - name: Move to location
         run: cd ./code
       - name: Zip files
-        run: zip -r code.zip .
+        run: zip -j -r code.zip ./code/*
+
 
       - name: Configure Google Cloud CLI
         uses: google-github-actions/setup-gcloud@v0.2.0
@@ -28,4 +29,4 @@ jobs:
 
       - name: Upload zip file to GCS bucket
         run: |
-          gsutil cp files.zip gs://webapp-prjt/
+          gsutil cp code.zip gs://webapp-prjt/

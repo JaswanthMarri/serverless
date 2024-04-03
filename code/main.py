@@ -32,6 +32,7 @@ def hello_http(request):
     generated_link = 'https://jaswanthmarri.com:8080/v1/user/register?token='+random_token
 
 
+
     # Create a update statement
     db = connect_with_connector()
     metadata = MetaData()
@@ -217,6 +218,7 @@ def usage_demo(email_id,tkn):
     # Include the URL in the email message
     test_message_text = f"Hello from the Amazon SES mail demo! Click here to register: https://jaswanthmarri.com:8080/v1/register?token={tkn}"
     test_message_html = "<p>Hello!</p><p>From the <b>Amazon SES</b> mail demo!</p><p>Click <a href='https://jaswanthmarri.com:8080/v1/register?token=" + tkn + "'>here</a> to register.</p>"
+
 
 
     print(f"Sending mail from {email} to {email}.")
